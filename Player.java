@@ -7,6 +7,7 @@ public class Player
 
 	private String name;
 	private int    winCount;
+	private Tactics tactics;
 	
 	public Player(String name)
 	{
@@ -15,17 +16,7 @@ public class Player
 	
 	public int showHand()
 	{
-		double randomNum = Math.random() * 3;
-		
-		if (randomNum < 1) {
-			return STONE;
-		}
-		
-		if (randomNum < 2) {
-			return SCISSORS;
-		}
-		
-		return PAPER;
+		return this.tactics.readTactics();
 	}
 	
 	public void notifyResult(boolean result)
@@ -43,5 +34,10 @@ public class Player
 	public String getName()
 	{
 		return this.name;
+	}
+	
+	void setTactics(Tactics tactics)
+	{
+		this.tactics = tactics;
 	}
 }
